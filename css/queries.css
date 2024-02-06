@@ -123,4 +123,65 @@ Instead, 1 REM = 1 EM = 16px
   .btn--form {
     margin-top: 1.2rem;
   }
+
+  /* MOBILE NAVIGATION */
+
+  .btn-mobile-nav {
+    display: block;
+  }
+
+  .header {
+    position: relative;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    height: 100vw;
+    width: 100%;
+    transition: all 0.5s ease-in;
+    transform: translateX(100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* HIDE NAVIGATION */
+
+    /* 1. Hide it visually */
+    opacity: 0;
+
+    /* 2. Make it unaccessible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3. Hide it from screen reader*/
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
 }

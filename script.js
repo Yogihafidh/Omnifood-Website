@@ -27,7 +27,6 @@ navigation.addEventListener("click", function (e) {
 // Sticky Navigation
 const obsCallback = function (entry) {
   const ent = entry[0];
-  console.log(ent);
 
   if (!ent.isIntersecting) document.body.classList.add("sticky");
   if (ent.isIntersecting) document.body.classList.remove("sticky");

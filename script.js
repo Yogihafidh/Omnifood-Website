@@ -1,6 +1,7 @@
 const btnNav = document.querySelector(".btn-mobile-nav");
 const header = document.querySelector(".header");
 const navigation = document.querySelector(".main-nav");
+const heroSection = document.querySelector(".section-hero");
 
 // Mobile Navigation
 btnNav.addEventListener("click", function () {
@@ -22,3 +23,21 @@ navigation.addEventListener("click", function (e) {
     header.classList.toggle("nav-open");
   }
 });
+
+// Sticky Navigation
+const obsCallback = function (entry) {
+  const ent = entry[0];
+  console.log(ent);
+
+  if (!ent.isIntersecting) document.body.classList.add("sticky");
+  if (ent.isIntersecting) document.body.classList.remove("sticky");
+};
+
+const obsOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: "-80px",
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+observer.observe(heroSection);

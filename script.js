@@ -2,6 +2,7 @@ const btnNav = document.querySelector(".btn-mobile-nav");
 const header = document.querySelector(".header");
 const navigation = document.querySelector(".main-nav");
 const heroSection = document.querySelector(".section-hero");
+const allSection = document.querySelectorAll(".section");
 
 // Mobile Navigation
 btnNav.addEventListener("click", function () {
@@ -40,3 +41,26 @@ const obsOptions = {
 
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 observer.observe(heroSection);
+
+// Smooth Scrolling
+const reveralCallback = function (entries, observer) {
+  const entry = entries[0];
+
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+const reveralOptions = {
+  root: null,
+  threshold: 0.15,
+};
+
+const sectionObserver = new IntersectionObserver(
+  reveralCallback,
+  reveralOptions
+);
+
+allSection.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
